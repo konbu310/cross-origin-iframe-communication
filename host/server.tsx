@@ -13,6 +13,10 @@ app.use("*", logger());
 
 app.get("/dist/*", serveStatic({ root: "host" }));
 
+app.get("/health_check", (c) => {
+  return c.text("OK");
+});
+
 app.get("/", (c) => {
   return c.html(
     <html>

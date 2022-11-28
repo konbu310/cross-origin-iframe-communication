@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { createRoot } from "react-dom/client";
 
-const src = "http://localhost:4000";
+const src = "http://127.0.0.1:4000";
 
 const channel = new MessageChannel();
 const port1 = channel.port1;
@@ -24,6 +24,16 @@ const App: FC<{}> = ({}) => {
 
   const onMessage = (ev: MessageEvent) => {
     console.log(ev.data);
+  };
+
+  const postRequest = async () => {
+    const res = await fetch(`${src}/hello`, {
+      method: "POST",
+      body: JSON.stringify({ name: "Yuya" }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const text = await res.text();
+    console.log(text);
   };
 
   useEffect(() => {
@@ -46,6 +56,11 @@ const App: FC<{}> = ({}) => {
         onChange={(ev) => setInputValue(ev.currentTarget.value)}
       />
       <button onClick={handleClick}>send</button>
+
+      <div style={{ margin: "50px auto" }}>
+        <label>CrossOrigin POST</label>
+        <button onClick={postRequest}>request</button>
+      </div>
 
       <div style={{ margin: "100px" }} />
 
