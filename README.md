@@ -40,5 +40,5 @@ npm run iframe
 ## Todo
 
 - [ ] Safari 対応
-- [ ] https 対応
+- [x] https 対応
 - [ ] WKWebView のテスト
