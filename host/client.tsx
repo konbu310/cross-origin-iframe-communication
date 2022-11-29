@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { createRoot } from "react-dom/client";
 
-const src = "http://127.0.0.1:4000";
+const src = "https://guest.localhost";
 
 const channel = new MessageChannel();
 const port1 = channel.port1;
